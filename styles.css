@@ -10,6 +10,7 @@ body {
   
   img {
     float: left;
+    cursor: pointer;
     /* padding-right: 1.5em; */
     width: 20em;
     height: 20em;
@@ -27,4 +28,9 @@ body {
     position: relative;
 
   }
- 
+  .visible {
+    visibility: visible;
+  }
+  .invisible {
+    visibility: hidden;
+  }
