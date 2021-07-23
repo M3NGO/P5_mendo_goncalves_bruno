@@ -37,19 +37,11 @@ let texteImages =  async function() { //fonction asynchrone pour laisser charger
                             img.setAttribute('class','clickable');
                             img.setAttribute('onclick', 'location.href='+ "'" + 'produit.html?id=' + appareilPhoto._id + "'" + ';'); // creation du lien cliquable personnalisé
                             
-                            img.addEventListener('click', function(){//fonction pour inscrire l'_id produit cliqué pour ensuite créer page objet séléctionné
+                            img.addEventListener('click', function(){//fonction pour inscrire l' URL personnalisée du produit cliqué pour ensuite créer page objet séléctionné
                                 localStorage.setItem('URL', 'produit.html?id=' + appareilPhoto._id);
                                 console.log(localStorage.URL)
 
                             });
-                            
-                                img.addEventListener('click', function(){//fonction pour inscrire l'_id produit cliqué pour ensuite créer page objet séléctionné
-                                    sessionStorage.setItem('ID', appareilPhoto._id);
-                                    console.log(sessionStorage.URL)
-                                
-                            });
-                            
-
                             document.querySelector('.caroussel').appendChild(cardDiv).appendChild(img);// display des photos en tant qu'img dans le html
                         
                         let nomObjet = document.createElement("h2"); // créé un élément HTML H2 pour le nom du produit
@@ -72,10 +64,3 @@ let texteImages =  async function() { //fonction asynchrone pour laisser charger
     });// fermeture then response
 };// fermeture fonction texteImage
     texteImages() // appelle la fonction texteImages
-
-
-let produit = localStorage.getItem('ID')
-console.log(produit)
-
-
-
