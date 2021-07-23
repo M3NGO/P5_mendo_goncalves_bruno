@@ -25,6 +25,9 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
                     let verifIdURL = appareil.find(appareilPhoto => appareilPhoto._id === produitIdUrl)
                         console.table(verifIdURL)
 
+                    let title = document.title;
+                    document.title = 'Orinoco ' + '- ' + verifIdURL.name;
+
                     let cardDiv = document.createElement("div") // créé une div reprensentant la card des produits
                         cardDiv.setAttribute('class', 'card')
                         document.querySelector('.product_card').appendChild(cardDiv);
