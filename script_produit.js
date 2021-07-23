@@ -2,16 +2,16 @@
 const url = "http://localhost:3000/api/cameras/";
 console.log(url)
 
-const urlProduit = localStorage.URL;
+let urlProduit = new URL(localStorage.URL, 'http://127.0.0.1:5500/');
 console.log(urlProduit)
-// urlProduit.searchParams.append(sessionStorage.ID)
+// urlProduit.searchParams.append(localStorage.URL)
 
 // fetch pour créer le texte et importer images des appareils photo
 
 let appareils = []; // tableau reception tableau promise
 let appareilsPromise =[];
 
-let texteImages =  async function() { //fonction asynchrone pour laisser charger le reste du site avant
+let carteProduit =  async function() { //fonction asynchrone pour laisser charger le reste du site avant
     let response = await fetch(url)
         .then((response)=>{
             let itemData = response.json(); // renvoit la promesse en JSON
@@ -23,8 +23,6 @@ let texteImages =  async function() { //fonction asynchrone pour laisser charger
                     appareils.push(...appareil)// (opérateur de décomposition : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Spread_syntax) Array appareil contenant chaque élément du Json "...appareil" pour importer tous les appareils dans le tableau appareil
                         console.table(appareil)
                         appareilsPromise.push(...appareil)
-
-                    
 
 
                     appareil.forEach((appareilPhoto) => {
@@ -83,7 +81,7 @@ let texteImages =  async function() { //fonction asynchrone pour laisser charger
         })// fermeture .catch
     });// fermeture then response
 }// fermeture fonction texteImage
-    texteImages() // appelle la fonction texteImages
+    carteProduit() // appelle la fonction texteImages
 
 
  
