@@ -2,7 +2,7 @@
 const url =	"http://localhost:3000/api/cameras/";
 console.log(url)
 
-let urlProduit = "http://127.0.0.1:5500/"+localStorage.URL;
+let urlProduit = "http://127.0.0.1:5500/"+sessionStorage.URL;
 console.log(urlProduit)
 
 // fetch pour créer le texte et importer images des appareils photo
@@ -38,8 +38,8 @@ let texteImages =  async function() { //fonction asynchrone pour laisser charger
                             img.setAttribute('onclick', 'location.href='+ "'" + 'produit.html?id=' + appareilPhoto._id + "'" + ';'); // creation du lien cliquable personnalisé
                             
                             img.addEventListener('click', function(){//fonction pour inscrire l' URL personnalisée du produit cliqué pour ensuite créer page objet séléctionné
-                                localStorage.setItem('URL', 'produit.html?id=' + appareilPhoto._id);
-                                console.log(localStorage.URL)
+                                sessionStorage.setItem('URL', 'produit.html?id=' + appareilPhoto._id);
+                                console.log(sessionStorage.URL)
 
                             });
                             document.querySelector('.caroussel').appendChild(cardDiv).appendChild(img);// display des photos en tant qu'img dans le html
