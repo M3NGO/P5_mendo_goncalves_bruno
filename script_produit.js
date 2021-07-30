@@ -26,7 +26,7 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
                         console.table(verifIdURL)
 
                     let title = document.title; // ajout titre page dynamique selon produit
-                    document.title = 'Orinoco ' + '- ' + verifIdURL.name; // ajout titre page dynamique selon produit
+                        document.title = 'Orinoco ' + '- ' + verifIdURL.name; // ajout titre page dynamique selon produit
 
                     let cardDiv = document.createElement("div") // créé une div reprensentant la card des produits
                         cardDiv.setAttribute('class', 'card')
@@ -35,8 +35,11 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
                     let img = new Image(); // display des images
                         img.src = verifIdURL.imageUrl; //donne les urls des photos dans du JSON
                         img.alt = verifIdURL.description;
+                        img.setAttribute('id', 'image');
                         document.querySelector('.product_card').appendChild(cardDiv).appendChild(img);// display des photos en tant qu'img dans le html
                     
+
+
                     let nomObjet = document.createElement("h2") // créé un élément HTML H2 pour le nom du produit
                         nomObjet.textContent = verifIdURL.name;
                         document.querySelector('.product_card').appendChild(cardDiv).appendChild(nomObjet);
@@ -56,6 +59,7 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
                         menuDeroulant.setAttribute('class', 'options-lenses')
                         menuDeroulant.innerHTML = '<option>Choisissez votre option</option>' // si besoin pour cart rajouter dans la balise option  : disabled selected hidden
                     
+                
                     verifIdURL.lenses.forEach((lense) => {
                             
                             let menuOptions = document.createElement("option");
@@ -63,17 +67,35 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
                                     console.log(menuOptions)
                                 document.querySelector('.product_card').appendChild(cardDiv).appendChild(menuDeroulant).appendChild(menuOptions); // ajout de menuOptions dans les menuDéroulants
                                     console.log(lense)
-                        })// fermeture forEach lenses
+                        });// fermeture forEach lenses
+                        
 
-                    let boutonCommander = document.createElement("button")
-                        boutonCommander.textContent = 'Ajouter au Panier'
-                        document.querySelector('.product_card').appendChild(cardDiv).appendChild(boutonCommander);
+                    let boutonAjouterPanier = document.createElement("button");
+                        boutonAjouterPanier.textContent = 'Ajouter au Panier';
+                        document.querySelector('.product_card').appendChild(cardDiv).appendChild(boutonAjouterPanier);
+                    
+                        boutonAjouterPanier.addEventListener('click', function(){
 
-                    })// fermeture de itemData.then
-                
+                            //fonction storage id/nom/link image au click sur le bouton ajouter au panier
+                            let tableauStorage = localStorage.getItem("tableauStorage");
+                            let tableauStorageLocal = [];
+                            if(tableauStorage){
+                                tableauStorageLocal=JSON.parse(tableauStorage);
+                                console.log(tableauStorageLocal)
+                            }
+                            tableauStorageLocal.push({"nom": verifIdURL.name, "id": verifIdURL._id, "img": verifIdURL.imageUrl, "inCart":"1",});
+                                localStorage.setItem("tableauStorage", JSON.stringify(tableauStorageLocal))
+                                // tableauStorageLocal.removeItem({"nom": verifIdURL.name, "id": verifIdURL._id, "img": verifIdURL.imageUrl, "inCart":tableauStorageLocal.inCart})
+
+                            console.log(tableauStorageLocal)
+                                //  localStorage.clear()
+                             }); //fermeture addEventListener click button
+
+                        })// fermeture de itemData.then
+            
         .catch(function(erreur){
             alert("Une erreur JS est survenue")
         })// fermeture .catch
     });// fermeture then response
 }// fermeture carteProduit
-    carteProduit() // appelle carteProduit
+carteProduit() // appelle carteProduit
