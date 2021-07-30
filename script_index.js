@@ -2,9 +2,6 @@
 const url =	"http://localhost:3000/api/cameras/";
 console.log(url)
 
-let urlProduit = "http://127.0.0.1:5500/"+sessionStorage.URL;
-console.log(urlProduit)
-
 // fetch pour créer le texte et importer images des appareils photo
 
 let appareils = []; // tableau reception tableau promise
@@ -37,11 +34,6 @@ let texteImages =  async function() { //fonction asynchrone pour laisser charger
                             img.setAttribute('class','clickable');
                             img.setAttribute('onclick', 'location.href='+ "'" + 'produit.html?id=' + appareilPhoto._id + "'" + ';'); // creation du lien cliquable personnalisé
                             
-                            img.addEventListener('click', function(){//fonction pour inscrire l' URL personnalisée du produit cliqué pour ensuite créer page objet séléctionné
-                                sessionStorage.setItem('URL', 'produit.html?id=' + appareilPhoto._id);
-                                console.log(sessionStorage.URL)
-
-                            });
                             document.querySelector('.caroussel').appendChild(cardDiv).appendChild(img);// display des photos en tant qu'img dans le html
                         
                         let nomObjet = document.createElement("h2"); // créé un élément HTML H2 pour le nom du produit
