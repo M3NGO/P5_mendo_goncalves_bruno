@@ -1,18 +1,5 @@
-// // localStorage
-
-// retourne les valeurs enregistrées dans le local storage parsée en tableau (sans cela est en JSON)
-
-
-// localStorage.removeItem('Katatone')
-
-
-
 const url = "http://localhost:3000/api/cameras/";
 console.log(url)
-
-// let panierUrl = window.location.search; //nous montre l'adresse actuelle, où on est.
-// panierUrl = panierUrl.substring(4) // substring(4) pour retirer les 4 premiers caractères de la partie search de l'URL, juste après '?' pour obtenir la chaine de caractères de l'id de l'objet à partir de l'url
-// console.log(panierUrl)
 
 // fetch pour créer le texte et importer images des appareils photo
 
@@ -107,11 +94,3 @@ let Panier =  async function() { //fonction asynchrone pour laisser charger le r
 
 const effacer = document.querySelectorAll("button")
 Panier() // appelle carteProduit
-
-
-    // document.getElementsByClassName("boutonValider").addEventListener('click',function(){
-    //     tableauStorage.removeItem(tableauStorage)
-    // })
-
-
-
