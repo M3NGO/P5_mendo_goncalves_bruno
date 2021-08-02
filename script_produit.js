@@ -89,6 +89,7 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
 
                             console.log(tableauStorageLocal)
                                 //  localStorage.clear()
+                                
                              }); //fermeture addEventListener click button
 
                         })// fermeture de itemData.then
