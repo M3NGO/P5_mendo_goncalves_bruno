@@ -11,29 +11,36 @@
 <body>
     
     <div class="panier"></div> <br>
-    <div class="formulaire" method="post">
+    <form class="formulaire" method="post">
         <div>
             <label for="firstName">Prénom :</label>
-            <input type="text" id="firstName" name="firstName">
+            <input type="text" id="firstName" name="firstName" placeholder='Jean' pattern="[A-Za-z]" title="Veuillez indiquer votre Prénom" required>
         </div>
         <div>
             <label for="lastName">Nom :</label>
-            <input type="text" id="lastName" name="lastName">
+            <input type="text" id="lastName" name="lastName" placeholder='Dupont' pattern="[A-Za-z]" title="Veuillez indiquer votre Nom" required>
         </div>
         <div>
-            <label for="adress">Adresse :</label>
-            <input type="email" id="mail" name="user_mail">
+            <label for="address">Adresse :</label>
+            <input type="text" id="address" name="address" placeholder='1 rue du Paradis' pattern="[a-zA-Z0-9-]+" title="Veuillez indiquer votre adresse" required>
         </div>
         <div>
-            <label for="mail">e-mail :</label>
-            <input type="email" id="mail" name="user_mail">
+            <label for="Postal">Code Postal :</label>
+            <input type="text" id="Postal" name="Postal" placeholder='75002' pattern="[0-9]{5}" title="Veuillez indiquer votre code Postal" required>
         </div>
         <div>
-            <label for="msg">Message :</label>
-            <textarea id="msg" name="user_message"></textarea>
+            <label for="city">Ville :</label>
+            <input type="text" id="city" name="city" placeholder='Paris' pattern="[A-Za-z]{45}" title="Veuillez indiquer votre ville" required>
         </div>
-        <input type="submit" value="Valider la commande">
-    </div>
+        <div>
+            <label for="email">email :</label>
+            <input class="valide" type="email" id="email" placeholder="email@email.com" pattern= ".+@.+." title=" Veuillez indiquer une adresse email valide" required>
+        </div>
+
+        <div>
+            <input type="submit" class="btn btn-primary" value ="Valider la commande" title="Cliquez pour valider la commande">
+        </div>
+    </form>
 
 </body>
 </html>
