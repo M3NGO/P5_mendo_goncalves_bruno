@@ -2,6 +2,10 @@
 const url =	"http://localhost:3000/api/cameras/";
 console.log(url)
 
+let title = document.title; // ajout titre page dynamique selon produit
+document.title = '0rinoco'; // ajout titre page dynamique selon produit
+
+
 // fetch pour créer le texte et importer images des appareils photo
 
 let appareils = []; // tableau reception tableau promise
