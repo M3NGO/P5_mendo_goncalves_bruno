@@ -83,13 +83,12 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
                                 tableauStorageLocal=JSON.parse(tableauStorage);
                                 console.log(tableauStorageLocal)
                             }
-                            tableauStorageLocal.push({"nom": verifIdURL.name, "id": verifIdURL._id, "img": verifIdURL.imageUrl, "inCart":"1",});
+                            tableauStorageLocal.push({"nom": verifIdURL.name, "_id": verifIdURL._id, "img": verifIdURL.imageUrl, "Quantite":'1', "prix": (verifIdURL.price/100).toFixed(2)});
                                 localStorage.setItem("tableauStorage", JSON.stringify(tableauStorageLocal))
-                                // tableauStorageLocal.removeItem({"nom": verifIdURL.name, "id": verifIdURL._id, "img": verifIdURL.imageUrl, "inCart":tableauStorageLocal.inCart})
+                               
 
                             console.log(tableauStorageLocal)
-                                //  localStorage.clear()
-                                
+                                //localStorage.clear()
                              }); //fermeture addEventListener click button
 
                         })// fermeture de itemData.then
