@@ -34,3 +34,7 @@ body {
   .invisible {
     visibility: hidden;
   }
+
+  input[pattern]:invalid{
+    color:red;
+  }
