@@ -5,42 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Votre panier</title>
+    <title></title>
     <script src="script_cart.js" async></script>
 </head>
 <body>
     
-    <div class="panier"></div> <br>
-    <form class="formulaire" method="post">
+    <div class="panier"></div>
+    <div class="totalPanier"></div>
+    <div class="formulaire" >
         <div>
             <label for="firstName">Prénom :</label>
-            <input type="text" id="firstName" name="firstName" placeholder='Jean' pattern="[A-Za-z]" title="Veuillez indiquer votre Prénom" required>
+            <input type="text" id="firstName" name="firstName" placeholder='Jean' pattern="[A-Za-z -]{2,40}" title="Veuillez indiquer votre Prénom" required>
         </div>
         <div>
             <label for="lastName">Nom :</label>
-            <input type="text" id="lastName" name="lastName" placeholder='Dupont' pattern="[A-Za-z]" title="Veuillez indiquer votre Nom" required>
+            <input type="text" id="lastName" name="lastName" placeholder='Dupont' pattern="[A-Za-z -]{2,40}" title="Veuillez indiquer votre Nom" required>
         </div>
         <div>
             <label for="address">Adresse :</label>
-            <input type="text" id="address" name="address" placeholder='1 rue du Paradis' pattern="[a-zA-Z0-9-]+" title="Veuillez indiquer votre adresse" required>
-        </div>
-        <div>
-            <label for="Postal">Code Postal :</label>
-            <input type="text" id="Postal" name="Postal" placeholder='75002' pattern="[0-9]{5}" title="Veuillez indiquer votre code Postal" required>
-        </div>
-        <div>
-            <label for="city">Ville :</label>
-            <input type="text" id="city" name="city" placeholder='Paris' pattern="[A-Za-z]{45}" title="Veuillez indiquer votre ville" required>
-        </div>
-        <div>
-            <label for="email">email :</label>
-            <input class="valide" type="email" id="email" placeholder="email@email.com" pattern= ".+@.+." title=" Veuillez indiquer une adresse email valide" required>
+            <input type="text" id="address" name="address" placeholder='1 rue du Paradis' pattern="[A-Za-z0-9 ,-]{1,25}" title="Veuillez indiquer votre adresse" required>
         </div>
 
         <div>
-            <input type="submit" class="btn btn-primary" value ="Valider la commande" title="Cliquez pour valider la commande">
+            <label for="postal">Code Postal :</label>
+            <input type="text" id="postal" name="postal" placeholder='75001' pattern="[0-9]{5}" title="Veuillez indiquer votre code postal" required>
         </div>
-    </form>
+        <div>
+            <label for="city">Ville :</label>
+            <input type="text" id="city" name="city" placeholder='Paris' pattern="[A-Za-z0-9 ,-]{1,25}" title="Veuillez indiquer votre ville" required>
+        </div>
+        <div>
+            <label for="email">email :</label>
+            <input type="email" id="email" name="email" placeholder='email@email.com' pattern= ".+@.+." title=" Veuillez indiquer une adresse email valide" class="valide"  required>
+        </div>
+        <!-- bouton valider commande créé par JS -->
+    </div>
 
 </body>
 </html>
