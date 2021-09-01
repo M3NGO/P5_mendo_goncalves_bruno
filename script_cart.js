@@ -19,17 +19,17 @@ let arrayUnique = Array.from(new Set(tableauStorage.map(appareil => appareil._id
         let quantiteArrayUnique = element.Quantite
         let prixObjetUnique = element.prix
         let objetNom = element.nom
-
+        
         let cardDiv = document.createElement("div") // créé une div reprensentant la card des produits
             cardDiv.setAttribute('class', 'card')
             document.querySelector('.panier').appendChild(cardDiv);
-                        
+            
         let img = new Image(); // display des images
             img.src = element.img; //donne les urls des photos dans du JSON
-            img.alt = element.nom;
+            img.alt = element.nom + ' ' + element.prix + ' €';
             img.setAttribute('id', 'image');
             document.querySelector('.panier').appendChild(cardDiv).appendChild(img);// display des photos en tant qu'img dans le html
-
+            console.log(img)
         let nomObjet = document.createElement("h2") // créé un élément HTML H2 pour le nom du produit
             nomObjet.textContent = element.nom;
             document.querySelector('.panier').appendChild(cardDiv).appendChild(nomObjet);
@@ -99,7 +99,7 @@ let arrayUnique = Array.from(new Set(tableauStorage.map(appareil => appareil._id
             console.log(prixTotalApprareil.innerHTML)
             document.querySelector('.panier').appendChild(cardDiv).appendChild(tableauTotalParAppareil).appendChild(prixTotalApprareil); // ajout de menuOptions dans les menuDéroulants
     
-        })//fermeture for each arrayUnique.id
+    })//fermeture for each arrayUnique.id
 
 let CoutTotalCommande = tableauStorage.reduce(function (total, currentValue) {
     return  Number(total) + Number(currentValue.prixTotalObjet);//Number() pour convertir le string en number
