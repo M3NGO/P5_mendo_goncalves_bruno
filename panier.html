@@ -7,41 +7,60 @@
     <link rel="shortcut icon" type="image/png" href="img/favicon-petit-orinoco.png">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <title></title>
     <script src="script_cart.js" async></script>
 </head>
 <body>
+    <header class="navbar navbar-light bg-light bg-gradient"> <!-- contient logo et partie map -->
+        <img class="logo" src="img/logo-orinoco-wording.png" alt="Logo Orinoco">
+        <nav>
+          <span class="nav-item"><a class="nav-link" href="panier.html"><img class="logoPanier" src="img/favicon-orinoco.png" alt="Logo Panier Orinoco"></a></span> 
+        </nav>
+    </header>
     
-    <div class="panier"></div>
-    <div class="totalPanier"></div>
-    <div class="formulaire " >
-        <div>
-            <label for="firstName">Prénom :</label>
-            <input type="text" class="form-control" id="firstName" name="firstName" placeholder='Jean' pattern="[A-Za-z -]{2,40}" title="Veuillez indiquer votre Prénom" required>
-        </div>
-        <div>
-            <label for="lastName">Nom :</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" placeholder='Dupont' pattern="[A-Za-z -]{2,40}" title="Veuillez indiquer votre Nom" required>
-        </div>
-        <div>
-            <label for="address">Adresse :</label>
-            <input type="text" class="form-control" id="address" name="address" placeholder='1 rue du Paradis' pattern="[A-Za-z0-9 ,-]{1,25}" title="Veuillez indiquer votre adresse" required>
-        </div>
+    <section>
+        <div class="panier"></div>
+        <div class="totalPanier"></div>
+        <div class="formulaire p-4">
+            <div>
+                <label for="firstName">Prénom :</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" placeholder='Jean' pattern="[A-Za-z -]{2,40}" title="Veuillez indiquer votre Prénom" required>
+            </div>
+            <div>
+                <label for="lastName">Nom :</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" placeholder='Dupont' pattern="[A-Za-z -]{2,40}" title="Veuillez indiquer votre Nom" required>
+            </div>
+            <div>
+                <label for="address">Adresse :</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder='1 rue du Paradis' pattern="[A-Za-z0-9 ,-]{1,25}" title="Veuillez indiquer votre adresse" required>
+            </div>
 
-        <div>
-            <label for="postal">Code Postal :</label>
-            <input type="text" class="form-control" id="postal" name="postal" placeholder='75001' maxlength="5" pattern="[0-9]{5}" title="Veuillez indiquer votre code postal" required>
+            <div>
+                <label for="postal">Code Postal :</label>
+                <input type="text" class="form-control" id="postal" name="postal" placeholder='75001' maxlength="5" pattern="[0-9]{5}" title="Veuillez indiquer votre code postal" required>
+            </div>
+            <div>
+                <label for="city">Ville :</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder='Paris' pattern="[A-Za-z0-9 ,-]{1,25}" title="Veuillez indiquer votre ville" required>
+            </div>
+            <div>
+                <label for="email">email :</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder='email@email.com' pattern= ".+@.+." title=" Veuillez indiquer une adresse email valide" class="valide"  required>
+            </div>
+            <!-- bouton valider commande créé par JS -->
         </div>
+    </section>
+
+    <footer class="text-center p-4 bg-secondary bg-gradient">
         <div>
-            <label for="city">Ville :</label>
-            <input type="text" class="form-control" id="city" name="city" placeholder='Paris' pattern="[A-Za-z0-9 ,-]{1,25}" title="Veuillez indiquer votre ville" required>
+            <a class="btn btn-link btn-lg text-white" href="#"><i class="fab fa-facebook-f"></i></a><!--Manque les liens vers les comptes de l'entreprise-->
+            <a class="btn btn-link btn-lg text-white" href="#"><i class="fab fa-twitter"></i></a>
+            <a class="btn btn-link btn-lg text-white" href="#"><i class="fab fa-google"></i></a>
+            <a class="btn btn-link btn-lg text-white" href="#"><i class="fab fa-instagram"></i></a>
         </div>
-        <div>
-            <label for="email">email :</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder='email@email.com' pattern= ".+@.+." title=" Veuillez indiquer une adresse email valide" class="valide"  required>
-        </div>
-        <!-- bouton valider commande créé par JS -->
-    </div>
+        <p class="text-center text-white">© 2021 Copyright Orinoco</p>
+    </footer>
 
 </body>
 </html>
