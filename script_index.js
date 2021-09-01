@@ -27,18 +27,18 @@ let texteImages =  async function() { //fonction asynchrone pour laisser charger
 
                         let cardDiv = document.createElement("div"); // créé une div reprensentant la card des produits
                             cardDiv.setAttribute('class', 'card');
-                            document.querySelector('.caroussel').appendChild(cardDiv);
+                            cardDiv.setAttribute('class', 'card align-self-center');
+                            document.querySelector('.section').appendChild(cardDiv);
 
                             console.log(appareilPhoto.name + " " + appareilPhoto.price + appareilPhoto.imageUrl) // pour chaque élément reçu du JSON et enregistré dans notre array appareil, on va créer des images, texte, titre, prix issu du JSON et jouer sur le DOM pour les afficher dans le navigateur
                        
                         let img = new Image(); // display des images
                             img.src = appareilPhoto.imageUrl; //donne les urls des photos dans du JSON
-                            img.alt = appareilPhoto.description;
-                            // img.setAttribute('href', 'produit.html?id=' + appareilPhoto._id); // Attributs pour créer le lien clickable image vers page produit
+                            img.alt = appareilPhoto.name + ' ' + (appareilPhoto.price/100).toFixed(2) + ' €'; //adaptation de la description selon recommendation WAVE car ALT DESCRIPTION trop longue
                             img.setAttribute('class','clickable card-img-top');
                             img.setAttribute('onclick', 'location.href='+ "'" + 'produit.html?id=' + appareilPhoto._id + "'" + ';'); // creation du lien cliquable personnalisé
                             
-                            document.querySelector('.caroussel').appendChild(cardDiv).appendChild(img);// display des photos en tant qu'img dans le html
+                            document.querySelector('.section').appendChild(cardDiv).appendChild(img);// display des photos en tant qu'img dans le html
                         
                         let texteCarteObjet = document.createElement('div');
                             texteCarteObjet.setAttribute('class', 'card-body')
@@ -46,13 +46,13 @@ let texteImages =  async function() { //fonction asynchrone pour laisser charger
                         let nomObjet = document.createElement("h2"); // créé un élément HTML H2 pour le nom du produit
                             nomObjet.textContent = appareilPhoto.name;
                             nomObjet.setAttribute('class','card-title')
-                            document.querySelector('.caroussel').appendChild(cardDiv).appendChild(texteCarteObjet).appendChild(nomObjet);
+                            document.querySelector('.section').appendChild(cardDiv).appendChild(texteCarteObjet).appendChild(nomObjet);
                                 console.log(nomObjet)
                         
                         let prixObjet = document.createElement("p"); // créé un élément HTML H3 pour le prix du produit
                             prixObjet.textContent = (appareilPhoto.price/100).toFixed(2) + ' €'; // .toFixed(2) pour mettre la virgule et deux chiffres après
                             prixObjet.setAttribute('class','card-text')
-                            document.querySelector('.caroussel').appendChild(cardDiv).appendChild(texteCarteObjet).appendChild(prixObjet);
+                            document.querySelector('.section').appendChild(cardDiv).appendChild(texteCarteObjet).appendChild(prixObjet);
                                 console.log(prixObjet)
 
                     });// fermeture appareils.forEach appareilPhoto dans tableau appareil
