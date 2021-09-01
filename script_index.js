@@ -35,19 +35,24 @@ let texteImages =  async function() { //fonction asynchrone pour laisser charger
                             img.src = appareilPhoto.imageUrl; //donne les urls des photos dans du JSON
                             img.alt = appareilPhoto.description;
                             // img.setAttribute('href', 'produit.html?id=' + appareilPhoto._id); // Attributs pour créer le lien clickable image vers page produit
-                            img.setAttribute('class','clickable');
+                            img.setAttribute('class','clickable card-img-top');
                             img.setAttribute('onclick', 'location.href='+ "'" + 'produit.html?id=' + appareilPhoto._id + "'" + ';'); // creation du lien cliquable personnalisé
                             
                             document.querySelector('.caroussel').appendChild(cardDiv).appendChild(img);// display des photos en tant qu'img dans le html
                         
+                        let texteCarteObjet = document.createElement('div');
+                            texteCarteObjet.setAttribute('class', 'card-body')
+
                         let nomObjet = document.createElement("h2"); // créé un élément HTML H2 pour le nom du produit
                             nomObjet.textContent = appareilPhoto.name;
-                            document.querySelector('.caroussel').appendChild(cardDiv).appendChild(nomObjet);
+                            nomObjet.setAttribute('class','card-title')
+                            document.querySelector('.caroussel').appendChild(cardDiv).appendChild(texteCarteObjet).appendChild(nomObjet);
                                 console.log(nomObjet)
                         
-                        let prixObjet = document.createElement("h3"); // créé un élément HTML H3 pour le prix du produit
+                        let prixObjet = document.createElement("p"); // créé un élément HTML H3 pour le prix du produit
                             prixObjet.textContent = (appareilPhoto.price/100).toFixed(2) + ' €'; // .toFixed(2) pour mettre la virgule et deux chiffres après
-                            document.querySelector('.caroussel').appendChild(cardDiv).appendChild(prixObjet);
+                            prixObjet.setAttribute('class','card-text')
+                            document.querySelector('.caroussel').appendChild(cardDiv).appendChild(texteCarteObjet).appendChild(prixObjet);
                                 console.log(prixObjet)
 
                     });// fermeture appareils.forEach appareilPhoto dans tableau appareil
