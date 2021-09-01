@@ -65,5 +65,14 @@ quantite.innerHTML = 'Le montant total de votre commande est de : ' + quantiteFi
 let boutonFinal = document.createElement('button')
 boutonFinal.setAttribute('class','boutonFinal')
 boutonFinal.setAttribute('onclick', 'window.location.replace("http://127.0.0.1:5500/index.html")')
+// fonction pour clear localStorage au click du retour a l'accueil
+boutonFinal.addEventListener('click', function(){
+    localStorage.clear();
+})
 document.querySelector('.confirmationCommande').appendChild(boutonFinal)
 boutonFinal.innerHTML = "retour à l'accueil"
+
+//Nettoyer localStorage a la fermeture de la page
+window.onunload = () => {
+    window.localStorage.clear()
+ }
