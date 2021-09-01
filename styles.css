@@ -1,7 +1,9 @@
 body {
-    font: 1.125rem/1.5, Helvetica, sans-serif;
+    font: 1.125em/1.5, Helvetica, sans-serif;
   }
-  
+.card-title{
+  font-size:1.5em !important;
+}
   .container {
     display: flow-root;
     width: 37.5em;
@@ -35,10 +37,16 @@ body {
   }
 
   .card{
-    margin : 2em;
-    width: 50%;
+    margin: 1em;
+    width: 20em !important;
+    height :26em!important;
+    flex-wrap: wrap !important;
+    /* height : 10em !important; */
   }
+.container-sm{
+  flex-wrap: wrap !important;
 
+}
   /* Fixed sidenav, full height */
 .sidenav {
   height: 100%;
@@ -57,7 +65,7 @@ body {
    width:160px;
    margin-left :1em;
  }
- .panier{
+ .logoPanier{
   height :2em;
   width:2em;
  }
