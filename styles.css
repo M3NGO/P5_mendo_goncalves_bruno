@@ -28,13 +28,36 @@ body {
     position: relative;
 
   }
-  .visible {
-    visibility: visible;
-  }
-  .invisible {
-    visibility: hidden;
-  }
+
 
   input[pattern]:invalid{
     color:red;
   }
+
+  .card{
+    margin : 2em;
+    width: 50%;
+  }
+
+  /* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #F3F8F2;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+ .logo{
+   height :3em;
+   width:160px;
+   margin-left :1em;
+ }
+ .panier{
+  height :2em;
+  width:2em;
+ }
