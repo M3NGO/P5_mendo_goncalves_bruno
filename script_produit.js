@@ -29,14 +29,15 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
                         document.title = 'Orinoco ' + '- ' + verifIdURL.name; // ajout titre page dynamique selon produit
 
                     let cardDiv = document.createElement("div") // créé une div reprensentant la card des produits
-                        cardDiv.setAttribute('class', 'card')
+                        cardDiv.setAttribute('class', 'card-body row')
                         document.querySelector('.product_card').appendChild(cardDiv);
                         
                     let img = new Image(); // display des images
                         img.src = verifIdURL.imageUrl; //donne les urls des photos dans du JSON
                         img.alt = verifIdURL.description;
                         img.setAttribute('id', 'image');
-                        document.querySelector('.product_card').appendChild(cardDiv).appendChild(img);// display des photos en tant qu'img dans le html
+                        img.setAttribute('class', 'card-img-top')
+                        document.querySelector('.product_card').appendChild(img);// display des photos en tant qu'img dans le html
                     
 
 
@@ -56,7 +57,7 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
                             console.log(descriptionObjet)
 
                     let menuDeroulant = document.createElement("select");
-                        menuDeroulant.setAttribute('class', 'options-lenses')
+                        menuDeroulant.setAttribute('class', 'options-lenses btn btn-outline-primary')
                         menuDeroulant.innerHTML = '<option>Choisissez votre option</option>' // si besoin pour cart rajouter dans la balise option  : disabled selected hidden
                     
                 
@@ -72,6 +73,7 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
 
                     let boutonAjouterPanier = document.createElement("button");
                         boutonAjouterPanier.textContent = 'Ajouter au Panier';
+                        boutonAjouterPanier.setAttribute('class','btn btn-primary')
                         document.querySelector('.product_card').appendChild(cardDiv).appendChild(boutonAjouterPanier);
                     
                         boutonAjouterPanier.addEventListener('click', function(){
@@ -83,10 +85,9 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
                                 tableauStorageLocal=JSON.parse(tableauStorage);
                                 console.log(tableauStorageLocal)
                             }
-                            tableauStorageLocal.push({"nom": verifIdURL.name, "_id": verifIdURL._id, "img": verifIdURL.imageUrl, "Quantite":'1', "prix": (verifIdURL.price/100).toFixed(2)});
+                            tableauStorageLocal.push({"nom": verifIdURL.name, "_id": verifIdURL._id, "img": verifIdURL.imageUrl, "Quantite":'1', "prix": (verifIdURL.price/100).toFixed(2), "prixTotalObjet":(verifIdURL.price/100).toFixed(2) });
                                 localStorage.setItem("tableauStorage", JSON.stringify(tableauStorageLocal))
-                               
-
+                            
                             console.log(tableauStorageLocal)
                                 //localStorage.clear()
                              }); //fermeture addEventListener click button
