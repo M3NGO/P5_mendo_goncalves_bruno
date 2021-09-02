@@ -27,70 +27,85 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
 
                     let title = document.title; // ajout titre page dynamique selon produit
                         document.title = 'Orinoco ' + '- ' + verifIdURL.name; // ajout titre page dynamique selon produit
+                    
+                        let titleObjectPage = document.createElement("h1")
+                        titleObjectPage.setAttribute('class','fst-italic text-center')
+                        titleObjectPage.innerText = verifIdURL.name
+                        document.querySelector('.titre').appendChild(titleObjectPage)
 
                     let cardDiv = document.createElement("div") // créé une div reprensentant la card des produits
-                        cardDiv.setAttribute('class', 'card-body row')
-                        document.querySelector('.product_card').appendChild(cardDiv);
+                        cardDiv.setAttribute('class', 'card-body')
+                        document.querySelector('.card').appendChild(cardDiv);
                         
                     let img = new Image(); // display des images
                         img.src = verifIdURL.imageUrl; //donne les urls des photos dans du JSON
                         img.alt = verifIdURL.description;
                         img.setAttribute('id', 'image');
                         img.setAttribute('class', 'card-img-top')
-                        document.querySelector('.product_card').appendChild(img);// display des photos en tant qu'img dans le html
+                        document.querySelector('.card').appendChild(img);// display des photos en tant qu'img dans le html
+
+                    let cardTitre = document.createElement("div")
+                        cardTitre.setAttribute('class', ' mb-2')
+                        document.querySelector('.card').appendChild(cardDiv).appendChild(cardTitre)
                     
-
-
                     let nomObjet = document.createElement("h2") // créé un élément HTML H2 pour le nom du produit
                         nomObjet.textContent = verifIdURL.name;
-                        document.querySelector('.product_card').appendChild(cardDiv).appendChild(nomObjet);
+                        nomObjet.setAttribute('class','card-title me-1')
+                        document.querySelector('.card').appendChild(cardDiv).appendChild(cardTitre).appendChild(nomObjet);
                             console.log(nomObjet)
                     
-                    let prixObjet = document.createElement("h3") // créé un élément HTML H3 pour le prix du produit
+                    let prixObjet = document.createElement("p") // créé un élément HTML H3 pour le prix du produit
                         prixObjet.textContent = (verifIdURL.price/100).toFixed(2) + ' €'; // .toFixed(2) pour mettre la virgule et deux chiffres après
-                        document.querySelector('.product_card').appendChild(cardDiv).appendChild(prixObjet);
+                        prixObjet.setAttribute('class','card-text')
+                        document.querySelector('.card').appendChild(cardDiv).appendChild(cardTitre).appendChild(prixObjet);
                             console.log(prixObjet)
 
-                    let descriptionObjet = document.createElement("p") // Créé une zone de texte pour la description de l'objet
-                        descriptionObjet.textContent = verifIdURL.description;
-                        document.querySelector('.product_card').appendChild(cardDiv).appendChild(descriptionObjet);
-                            console.log(descriptionObjet)
+                    let cardSelection = document.createElement("div")
+                        cardSelection.setAttribute('class', 'row')
+                        document.querySelector('.card').appendChild(cardDiv).appendChild(cardSelection)
 
                     let menuDeroulant = document.createElement("select");
-                        menuDeroulant.setAttribute('class', 'options-lenses btn btn-outline-primary')
-                        menuDeroulant.innerHTML = '<option>Choisissez votre option</option>' // si besoin pour cart rajouter dans la balise option  : disabled selected hidden
+                        menuDeroulant.setAttribute('class', 'btn btn-outline-primary mb-1')
+                        menuDeroulant.innerHTML = '<option>Lentilles</option>' // si besoin pour cart rajouter dans la balise option  : disabled selected hidden
                     
-                
-                    verifIdURL.lenses.forEach((lense) => {
+                        verifIdURL.lenses.forEach((lense) => {
+                                
+                                let menuOptions = document.createElement("option");
+                                    menuOptions.text = lense
+                                        console.log(menuOptions)
+                                    document.querySelector('.card').appendChild(cardDiv).appendChild(cardSelection).appendChild(menuDeroulant).appendChild(menuOptions); // ajout de menuOptions dans les menuDéroulants
+                                        console.log(lense)
+                            });// fermeture forEach lenses
                             
-                            let menuOptions = document.createElement("option");
-                                menuOptions.text = lense
-                                    console.log(menuOptions)
-                                document.querySelector('.product_card').appendChild(cardDiv).appendChild(menuDeroulant).appendChild(menuOptions); // ajout de menuOptions dans les menuDéroulants
-                                    console.log(lense)
-                        });// fermeture forEach lenses
-                        
-
+    
                     let boutonAjouterPanier = document.createElement("button");
-                        boutonAjouterPanier.textContent = 'Ajouter au Panier';
-                        boutonAjouterPanier.setAttribute('class','btn btn-primary')
-                        document.querySelector('.product_card').appendChild(cardDiv).appendChild(boutonAjouterPanier);
+                        boutonAjouterPanier.textContent = 'Ajouter au panier';
+                        boutonAjouterPanier.setAttribute('class','btn btn-primary mb-1')
+                        document.querySelector('.card').appendChild(cardDiv).appendChild(cardSelection).appendChild(boutonAjouterPanier);
                     
-                        boutonAjouterPanier.addEventListener('click', function(){
+                    boutonAjouterPanier.addEventListener('click', function(){
 
-                            //fonction storage id/nom/link image au click sur le bouton ajouter au panier
-                            let tableauStorage = localStorage.getItem("tableauStorage");
-                            let tableauStorageLocal = [];
+                        //fonction storage id/nom/link image au click sur le bouton ajouter au panier
+                        let tableauStorage = localStorage.getItem("tableauStorage");
+                        let tableauStorageLocal = [];
                             if(tableauStorage){
                                 tableauStorageLocal=JSON.parse(tableauStorage);
                                 console.log(tableauStorageLocal)
                             }
-                            tableauStorageLocal.push({"nom": verifIdURL.name, "_id": verifIdURL._id, "img": verifIdURL.imageUrl, "Quantite":'1', "prix": (verifIdURL.price/100).toFixed(2), "prixTotalObjet":(verifIdURL.price/100).toFixed(2) });
-                                localStorage.setItem("tableauStorage", JSON.stringify(tableauStorageLocal))
+                        tableauStorageLocal.push({"nom": verifIdURL.name, "_id": verifIdURL._id, "img": verifIdURL.imageUrl, "Quantite":'1', "prix": (verifIdURL.price/100).toFixed(2), "prixTotalObjet":(verifIdURL.price/100).toFixed(2) });
+                            localStorage.setItem("tableauStorage", JSON.stringify(tableauStorageLocal))
                             
-                            console.log(tableauStorageLocal)
+                        console.log(tableauStorageLocal)
                                 //localStorage.clear()
-                             }); //fermeture addEventListener click button
+                        }); //fermeture addEventListener click button
+
+
+                    let descriptionObjet = document.createElement("p") // Créé une zone de texte pour la description de l'objet
+                        descriptionObjet.setAttribute('class','card-body text-center')
+                        descriptionObjet.textContent = verifIdURL.description;
+                        document.querySelector('.card').appendChild(cardDiv).appendChild(descriptionObjet);
+                            console.log(descriptionObjet)
+
 
                         })// fermeture de itemData.then
             
