@@ -13,43 +13,53 @@
 </head>
 <body>
     <header class="navbar navbar-light bg-light bg-gradient"> <!-- contient logo et partie map -->
-        <img class="logo" src="img/logo-orinoco-wording.png" alt="Logo Orinoco">
+        <a href='index.html'><img class="logo" src="img/logo-orinoco-wording.png" alt="Logo Orinoco"></a>
         <nav>
           <span class="nav-item"><a class="nav-link" href="panier.html"><img class="logoPanier" src="img/favicon-orinoco.png" alt="Logo Panier Orinoco"></a></span> 
         </nav>
     </header>
     
     <section>
-        <div class="panier"></div>
-        <div class="totalPanier"></div>
-        <div class="formulaire p-4">
+        <h1 class="d-flex justify-content-center fst-italic">Votre panier Orinoco</h1>
+        
+
+        <div class="container-sm">
+        <div class="row">
+        <div class="panier container-sm col d-flex justify-content-center"></div>
+        
+        <div class="formulaire col p-4">
             <div>
                 <label for="firstName">Prénom :</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" placeholder='Jean' pattern="[A-Za-z -]{2,40}" title="Veuillez indiquer votre Prénom" required>
+                <input type="text" class="form-control mb-2" id="firstName" name="firstName" placeholder='Jean' pattern="[A-Za-z -]{2,40}" title="Veuillez indiquer votre Prénom" required>
             </div>
             <div>
                 <label for="lastName">Nom :</label>
-                <input type="text" class="form-control" id="lastName" name="lastName" placeholder='Dupont' pattern="[A-Za-z -]{2,40}" title="Veuillez indiquer votre Nom" required>
+                <input type="text" class="form-control mb-2" id="lastName" name="lastName" placeholder='Dupont' pattern="[A-Za-z -]{2,40}" title="Veuillez indiquer votre Nom" required>
             </div>
             <div>
                 <label for="address">Adresse :</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder='1 rue du Paradis' pattern="[A-Za-z0-9 ,-]{1,25}" title="Veuillez indiquer votre adresse" required>
+                <input type="text" class="form-control mb-2" id="address" name="address" placeholder='1 rue du Paradis' pattern="[A-Za-z0-9 ,-]{1,25}" title="Veuillez indiquer votre adresse" required>
             </div>
 
             <div>
                 <label for="postal">Code Postal :</label>
-                <input type="text" class="form-control" id="postal" name="postal" placeholder='75001' maxlength="5" pattern="[0-9]{5}" title="Veuillez indiquer votre code postal" required>
+                <input type="text" class="form-control mb-2" id="postal" name="postal" placeholder='75001' maxlength="5" pattern="[0-9]{5}" title="Veuillez indiquer votre code postal" required>
             </div>
             <div>
                 <label for="city">Ville :</label>
-                <input type="text" class="form-control" id="city" name="city" placeholder='Paris' pattern="[A-Za-z0-9 ,-]{1,25}" title="Veuillez indiquer votre ville" required>
+                <input type="text" class="form-control mb-2" id="city" name="city" placeholder='Paris' pattern="[A-Za-z0-9 ,-]{1,25}" title="Veuillez indiquer votre ville" required>
             </div>
             <div>
                 <label for="email">email :</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder='email@email.com' pattern= ".+@.+." title=" Veuillez indiquer une adresse email valide" class="valide"  required>
+                <input type="email" class="form-control mb-2" id="email" name="email" placeholder='email@email.com' pattern= ".+@.+." title=" Veuillez indiquer une adresse email valide" class="valide"  required>
             </div>
+
+            <div class="totalPanier d-flex justify-content-center"></div>
             <!-- bouton valider commande créé par JS -->
         </div>
+    </div><!--div class row-->
+    </div><!-- div container sm-->
+
     </section>
 
     <footer class="text-center p-4 bg-secondary bg-gradient">
