@@ -38,6 +38,7 @@ document.querySelector('.container-fluid').appendChild(boutonFinal)
 boutonFinal.innerHTML = "retour à l'accueil"
 
 //Nettoyer localStorage a la fermeture de la page
-window.onunload = () => {
+window.onunload = function () {
     window.localStorage.clear()
+    window.location = 'http://127.0.0.1:5500/index.html' // pour retourner le user a la page d'accueil s'il refresh la page confirmation commande
  }
