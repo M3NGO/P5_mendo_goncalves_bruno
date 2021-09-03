@@ -28,6 +28,7 @@
         <div class="panier container-sm col d-flex justify-content-center"></div>
         
         <div class="formulaire col p-4">
+            <h2>Vos coordonnées de commande :</h2>
             <div>
                 <label for="firstName">Prénom :</label>
                 <input type="text" class="form-control mb-2" id="firstName" name="firstName" placeholder='Jean' pattern="[A-Za-z -]{2,40}" title="Veuillez indiquer votre Prénom" required>
@@ -51,7 +52,7 @@
             </div>
             <div>
                 <label for="email">email :</label>
-                <input type="email" class="form-control mb-2" id="email" name="email" placeholder='email@email.com' pattern= ".+@.+." title=" Veuillez indiquer une adresse email valide" class="valide"  required>
+                <input type="email" class="form-control mb-2" id="email" name="email" placeholder='email@email.com' pattern= "[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}" title=" Veuillez indiquer une adresse email valide" class="valide"  required>
             </div>
 
             <div class="totalPanier d-flex justify-content-center"></div>
