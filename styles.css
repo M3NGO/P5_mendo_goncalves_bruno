@@ -42,6 +42,9 @@ body {
     width: 20em !important;
     flex-wrap: wrap !important;
   }
+  .card-small{
+    max-height: 31em !important;
+  }/*class pour réduire la hauteur de la carte quand elle est seule dans le panier, si deux cartes ou plus pas de soucis mais avec une seule l'espce cardbody est trop grand*/
 .container-sm{
   flex-wrap: wrap !important;
 
@@ -83,3 +86,36 @@ body {
  .position{
    position:absolute
  }
+
+ /* loading spinner */
+@keyframes disparait {
+  0% {
+    opacity: 1;
+    z-index: 1;
+  }
+  99% {
+    opacity: 1;
+    z-index: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+.loading-spinner{
+  animation: 3s  disparait forwards;
+  background-color:  white;
+  width: 100%;
+  height:100%;
+  position: fixed;
+  z-index: 1;
+  
+}
+/* spinner-border pour forcer modif css bootstrap pour le spinner */
+.spinner-border{
+  height : 5em !important;
+  width: 5em !important;
+  font-size:xx-large;
+}
+/* Fin - loading spinner */
