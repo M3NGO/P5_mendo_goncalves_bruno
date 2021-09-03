@@ -30,10 +30,11 @@ let arrayUnique = Array.from(new Set(tableauStorage.map(appareil => appareil._id
         let _ids = element._id
         let quantiteArrayUnique = element.Quantite
         let prixObjetUnique = element.prix
+      
         let objetNom = element.nom
         
         let cardDiv = document.createElement("div") // créé une div reprensentant la card des produits
-            cardDiv.setAttribute('class', 'card card-extend')
+            cardDiv.setAttribute('class', 'card card-extend card-small')
             document.querySelector('.panier').appendChild(cardDiv);
             
         let img = new Image(); // display des images
@@ -100,16 +101,20 @@ let arrayUnique = Array.from(new Set(tableauStorage.map(appareil => appareil._id
        boutonValiderQuantiteAppareils.addEventListener('click', function (){
 
                                                         let finder = arrayUnique.find(appareil => appareil._id === _ids) // va chercher l'id de l'appareil dans l'arrayUnique pour s'enservir ensuite pour le delete
-                                                        let arrayUniqueFiltre = arrayUnique.splice(arrayUnique.indexOf(finder) , 1)// delete l'id du tableau arrayUnique
-
+                                                        
                                                         let appareilsCommande = new Object({"nom": objetNom, "_id": _ids,"img": img.src,"Quantite":quantite.value, "prix":prixObjetUnique,"prixTotalObjet": ((quantite.value)*(prixObjetUnique)).toFixed(2)});//definit nouvel objet a mettre dans l'arrayUnique
                                                         
-                                                            arrayUnique.push(appareilsCommande)//push le nouvel objet dans le tableau arrayUnique
+                                                        let arrayUniqueFiltre = arrayUnique.splice(arrayUnique.indexOf(finder) , 1, appareilsCommande)// tableau.splice(index, 0, item) insert 'appareilsCommande' a son index d'origine pour remplacer la quantité
+
+                                                        
+                                                        
+                                                        
+                                                            // arrayUnique.push(appareilsCommande)//push le nouvel objet dans le tableau arrayUnique
                                                             console.log(appareilsCommande.prix)
 
                                                             localStorage.setItem("tableauStorage", JSON.stringify(arrayUnique))//stringify arrayUnique pour le mettre dans localStorage sous le nom TableauStorage
                                                             document.location.reload()
-                                                            console.log(arrayUnique)
+                                                            console.table(arrayUnique)
                             }); //fermeture addEventListener click boutonValiderQuantiteAppareils
                             
         let boutonX = document.createElement("a");//bouton enlever appareil du panier
