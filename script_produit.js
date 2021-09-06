@@ -65,6 +65,7 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
                         document.querySelector('.card').appendChild(cardDiv).appendChild(cardSelection)
 
                     let menuDeroulant = document.createElement("select");
+                        menuDeroulant.setAttribute('aria-label', "selecteur d'objectifs")
                         menuDeroulant.setAttribute('class', 'btn btn-outline-primary mb-1')
                         menuDeroulant.innerHTML = '<option>Lentilles</option>' // si besoin pour cart rajouter dans la balise option  : disabled selected hidden
                     
