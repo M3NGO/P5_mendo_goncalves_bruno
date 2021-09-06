@@ -74,6 +74,7 @@ let arrayUnique = Array.from(new Set(tableauStorage.map(appareil => appareil._id
 
         let quantite = document.createElement("input");
             quantite.setAttribute('class', 'quantite mb-1')
+            quantite.setAttribute('aria-label', 'selecteur de quantité')
             quantite.setAttribute('type', 'number')
             quantite.setAttribute('value', quantiteArrayUnique)
             quantite.setAttribute('min', '1') // Qté minimum 1 pour empecher des values inférieures, si le user veut delete l'objet alors il y a un bouton pour ça
@@ -90,10 +91,11 @@ let arrayUnique = Array.from(new Set(tableauStorage.map(appareil => appareil._id
             prixTotalApprareil.innerHTML = 'Total Appareil : '
             console.log(prixTotalApprareil.innerHTML)
             document.querySelector('.panier').appendChild(cardDiv).appendChild(cardSousImage).appendChild(cardTitreGrid).appendChild(tableauTotalParAppareil).appendChild(prixTotalApprareil); // ajout de menuOptions dans les menuDéroulants
+        
         let prixTotalApprareilMontant =document.createElement("p")
-        prixTotalApprareilMontant.setAttribute('class','card-text')
-        prixTotalApprareilMontant.innerHTML =((quantite.value)*(element.prix)).toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')+' ' + '€';
-        document.querySelector('.panier').appendChild(cardDiv).appendChild(cardSousImage).appendChild(cardTitreGrid).appendChild(tableauTotalParAppareil).appendChild(prixTotalApprareilMontant)
+            prixTotalApprareilMontant.setAttribute('class','card-text')
+            prixTotalApprareilMontant.innerHTML =((quantite.value)*(element.prix)).toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')+' ' + '€';
+            document.querySelector('.panier').appendChild(cardDiv).appendChild(cardSousImage).appendChild(cardTitreGrid).appendChild(tableauTotalParAppareil).appendChild(prixTotalApprareilMontant)
 
         let boutonValiderQuantiteAppareils = document.createElement("button");
             boutonValiderQuantiteAppareils.textContent = 'Valider la quantité';
@@ -151,12 +153,12 @@ localStorage.setItem("coutTotalCommande", CoutTotalCommande.toFixed(2))
 //fonction totalCommande pour obtenir le total de la commande tous objets et quantités désirées
 function totalCommande(){
     let totalCommande = document.createElement("div")
-    totalCommande.setAttribute('class', 'totalCommande fs-2')
+    totalCommande.setAttribute('class', 'totalCommande fs-2 text-center')
     totalCommande.innerHTML ='Total de votre commande : '
     document.querySelector('.totalPanier').appendChild(totalCommande)
 
-    let totalCommandeMontant = document.createElement("p")
-    totalCommandeMontant.setAttribute('class','fs-2 text')
+    let totalCommandeMontant = document.createElement("div")
+    totalCommandeMontant.setAttribute('class','fs-2 text-center')
     totalCommandeMontant.innerHTML = ((CoutTotalCommande.toFixed(2)).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')) + ' €'
     document.querySelector('.totalPanier').appendChild(totalCommande).appendChild(totalCommandeMontant)
     
