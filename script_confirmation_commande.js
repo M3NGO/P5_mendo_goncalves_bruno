@@ -15,6 +15,7 @@ let remerciement = document.createElement('h1')
 
 //commande:
 let quantiteFinale = localStorage.getItem('coutTotalCommande')
+quantiteFinale=quantiteFinale.replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
 console.log(quantiteFinale)
 
 let confPaiement = document.createElement('p')
