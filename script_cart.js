@@ -7,7 +7,7 @@ console.table(tableauStorage)
 //check si localStorage vide et affiche alerte panier vide pour retour accueil
 if (localStorage.getItem("tableauStorage") === null) {
     alert( 'Votre panier est vide')
-    window.location = 'http://127.0.0.1:5500/index.html' // retour à l'accueil au click panier alert
+    window.location = 'index.html' // retour à l'accueil au click panier alert
   }
 
 
@@ -222,7 +222,7 @@ validerCommande.addEventListener("click", function (){
                         RepApi.push(obj)
                         console.table(obj.orderId)
                         localStorage.setItem("orderId", obj.orderId)
-                        window.location.replace("http://127.0.0.1:5500/confirmation_commande.html");//pour envoyer le user sur la page de confirmation de commanda si le code se passe bien
+                        window.location.replace("confirmation_commande.html");//pour envoyer le user sur la page de confirmation de commanda si le code se passe bien
                     })//fermeture fonction obj ConfCommande
 
             .catch(function(mauvaiserep){ console.log(mauvaiserep)

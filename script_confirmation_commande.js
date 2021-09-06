@@ -30,7 +30,7 @@ let confAdresse = document.createElement('p')
 
 let boutonFinal = document.createElement('button')
     boutonFinal.setAttribute('class','btn btn-primary')
-    boutonFinal.setAttribute('onclick', 'window.location.replace("http://127.0.0.1:5500/index.html")')
+    boutonFinal.setAttribute('onclick', 'window.location.replace("index.html")')
 // fonction pour clear localStorage au click du retour a l'accueil
 boutonFinal.addEventListener('click', function(){
     localStorage.clear();
@@ -41,5 +41,5 @@ boutonFinal.innerHTML = "retour à l'accueil"
 //Nettoyer localStorage a la fermeture de la page
 window.onunload = function () {
     window.localStorage.clear()
-    window.location = 'http://127.0.0.1:5500/index.html' // pour retourner le user a la page d'accueil s'il refresh la page confirmation commande
+    window.location = 'index.html' // pour retourner le user a la page d'accueil s'il refresh la page confirmation commande
  }
