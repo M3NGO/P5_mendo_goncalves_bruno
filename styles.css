@@ -52,7 +52,7 @@ input[pattern]:invalid{
   
 @media (min-width: 974px){
   .card-small{
-    max-height: 31em !important;
+    max-height: 32em !important;
   }
 }
 
