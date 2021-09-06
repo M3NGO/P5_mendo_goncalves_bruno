@@ -2,7 +2,7 @@ let title = document.title; // ajout titre page dynamique selon produit
             document.title = '0rinoco - Votre Panier'; // ajout titre page dynamique selon produit
 
 let tableauStorage = JSON.parse(localStorage.getItem("tableauStorage")); //on parse le localStorage dans un tableau appellé tableauStorage
-console.table(tableauStorage)
+// console.table(tableauStorage)
 
 //check si localStorage vide et affiche alerte panier vide pour retour accueil
 if (localStorage.getItem("tableauStorage") === null) {
@@ -16,14 +16,14 @@ if (localStorage.getItem("tableauStorage") === null) {
     window.localStorage.clear()
     document.location.reload()
 }
-//ArrayUnique pour display uniquement une fois les appareils souahités (les quantités sont dans colonne inCart du tableauStorage)
+//ArrayUnique pour display uniquement une fois les appareils souhaités (les quantités sont dans colonne inCart du tableauStorage)
 let arrayUnique = Array.from(new Set(tableauStorage.map(appareil => appareil._id))) // creation nouveau tableau a partir d'un nouveau set d'ids uniques provenant du tableauStorage
                     .map(_id => { 
                              return tableauStorage.find(appareil => appareil._id === _id)
                                 })   // on map le nouvel arrayUnique pour y inserer les id appareils uniques provenant du tableauStorage initial
-                        console.table(arrayUnique)
+                        // console.table(arrayUnique)
                         
-                        console.log(localStorage)
+                        // console.log(localStorage)
 
     arrayUnique.forEach(element  => { // pour chaque element(appareil) du tableau unique alors une carte appareil est créée.
         
@@ -60,13 +60,13 @@ let arrayUnique = Array.from(new Set(tableauStorage.map(appareil => appareil._id
             nomObjet.textContent = element.nom;
             nomObjet.setAttribute('class', 'card-title')
             document.querySelector('.panier').appendChild(cardDiv).appendChild(cardSousImage).appendChild(cardTitreGrid).appendChild(cardTitre).appendChild(nomObjet);
-            console.log(nomObjet)
+            // console.log(nomObjet)
                     
         let prixObjet = document.createElement("p") // créé un élément HTML H3 pour le prix du produit
             prixObjet.textContent = (prixObjetUnique.replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ') + ' €'); // .toFixed(2) pour mettre la virgule et deux chiffres après
             prixObjet.setAttribute('class', 'card-text')
             document.querySelector('.panier').appendChild(cardDiv).appendChild(cardSousImage).appendChild(cardTitreGrid).appendChild(cardTitre).appendChild(prixObjet);
-            console.log(prixObjet)
+            // console.log(prixObjet)
 
         let cardDivSelection = document.createElement("div")
             cardDivSelection.setAttribute('class','d-flex row')
@@ -89,7 +89,7 @@ let arrayUnique = Array.from(new Set(tableauStorage.map(appareil => appareil._id
         let prixTotalApprareil = document.createElement("h2"); 
             prixTotalApprareil.setAttribute('class', 'prixTotalAppareil card-title')
             prixTotalApprareil.innerHTML = 'Total Appareil : '
-            console.log(prixTotalApprareil.innerHTML)
+            // console.log(prixTotalApprareil.innerHTML)
             document.querySelector('.panier').appendChild(cardDiv).appendChild(cardSousImage).appendChild(cardTitreGrid).appendChild(tableauTotalParAppareil).appendChild(prixTotalApprareil); // ajout de menuOptions dans les menuDéroulants
         
         let prixTotalApprareilMontant =document.createElement("p")
@@ -108,18 +108,12 @@ let arrayUnique = Array.from(new Set(tableauStorage.map(appareil => appareil._id
                                                         let finder = arrayUnique.find(appareil => appareil._id === _ids) // va chercher l'id de l'appareil dans l'arrayUnique pour s'enservir ensuite pour le delete
                                                         
                                                         let appareilsCommande = new Object({"nom": objetNom, "_id": _ids,"img": img.src,"Quantite":quantite.value, "prix":prixObjetUnique,"prixTotalObjet": ((quantite.value)*(prixObjetUnique)).toFixed(2)});//definit nouvel objet a mettre dans l'arrayUnique
-                                                        
+                                                        // console.log(appareilsCommande.prix)
                                                         let arrayUniqueFiltre = arrayUnique.splice(arrayUnique.indexOf(finder) , 1, appareilsCommande)// tableau.splice(index, 0, item) insert 'appareilsCommande' a son index d'origine pour remplacer la quantité
 
-                                                        
-                                                        
-                                                        
-                                                            // arrayUnique.push(appareilsCommande)//push le nouvel objet dans le tableau arrayUnique
-                                                            console.log(appareilsCommande.prix)
-
-                                                            localStorage.setItem("tableauStorage", JSON.stringify(arrayUnique))//stringify arrayUnique pour le mettre dans localStorage sous le nom TableauStorage
-                                                            document.location.reload()
-                                                            console.table(arrayUnique)
+                                                        localStorage.setItem("tableauStorage", JSON.stringify(arrayUnique))//stringify arrayUnique pour le mettre dans localStorage sous le nom TableauStorage
+                                                        document.location.reload()
+                                                        // console.table(arrayUnique)
                             }); //fermeture addEventListener click boutonValiderQuantiteAppareils
                             
         let boutonX = document.createElement("a");//bouton enlever appareil du panier
@@ -132,9 +126,8 @@ let arrayUnique = Array.from(new Set(tableauStorage.map(appareil => appareil._id
             boutonX.addEventListener('click', function(){
 
                                 let appareilFind= tableauStorage.find(appareil => appareil._id === _ids) // appareilfind pour déclarer une variable pour trouver l'id de lappareil clické, on s'en sert ensuite pour le splice du nouveau tableau
-                                console.log(appareilFind)
+                                // console.log(appareilFind)
                                 document.location.reload()
-
 
                                 arrayUniqueFiltre = arrayUnique.splice(arrayUnique.indexOf(appareilFind) , 1)//creation nouveau tableau arrayuniquefiltre pour stocker la valeur qu'on retire du tableau arrayUnique
 
@@ -146,10 +139,10 @@ let arrayUnique = Array.from(new Set(tableauStorage.map(appareil => appareil._id
 
 let CoutTotalCommande = tableauStorage.reduce(function (total, currentValue) {
     return  Number(total) + Number(currentValue.prixTotalObjet);//Number() pour convertir le string en number
-}, 0);
-console.log(CoutTotalCommande)
+}, 0);// reduce pour faire addition de la colone prixtotal du tableauStorage
+// console.log(CoutTotalCommande)
 
-localStorage.setItem("coutTotalCommande", CoutTotalCommande.toFixed(2))
+localStorage.setItem("coutTotalCommande", CoutTotalCommande.toFixed(2))//création objet localStorage avec le coût total de la commande
 //fonction totalCommande pour obtenir le total de la commande tous objets et quantités désirées
 function totalCommande(){
     let totalCommande = document.createElement("div")
@@ -213,14 +206,14 @@ validerCommande.addEventListener("click", function (){
     //traitement réponse reçue de l'API suite fetch POST API
         .then((response)=>{
             let confCommande = response.json(); // renvoit la promesse en JSON
-                console.log(response)
+                // console.log(response)
                 let RepApi = [];
                 RepApi.push(confCommande)
-                console.log(RepApi)
+                // console.log(RepApi)
                 
                 confCommande.then(function (obj){
                         RepApi.push(obj)
-                        console.table(obj.orderId)
+                        // console.table(obj.orderId)
                         localStorage.setItem("orderId", obj.orderId)
                         window.location.replace("confirmation_commande.html");//pour envoyer le user sur la page de confirmation de commanda si le code se passe bien
                     })//fermeture fonction obj ConfCommande
