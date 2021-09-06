@@ -55,7 +55,7 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
                             console.log(nomObjet)
                     
                     let prixObjet = document.createElement("p") // créé un élément HTML H3 pour le prix du produit
-                        prixObjet.textContent = (verifIdURL.price/100).toFixed(2) + ' €'; // .toFixed(2) pour mettre la virgule et deux chiffres après
+                        prixObjet.textContent = (verifIdURL.price/100).toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ') + ' €'; // .toFixed(2) pour mettre la virgule et deux chiffres après + .replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ') pour mettre separateur miliers et virgule au lieux du point
                         prixObjet.setAttribute('class','card-text')
                         document.querySelector('.card').appendChild(cardDiv).appendChild(cardTitre).appendChild(prixObjet);
                             console.log(prixObjet)
