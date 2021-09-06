@@ -1,10 +1,10 @@
 
 const url = "http://localhost:3000/api/cameras/";
-console.log(url)
+// console.log(url)
 
 let produitIdUrl = window.location.search; //nous montre l'adresse actuelle, où on est.
 produitIdUrl = produitIdUrl.substring(4) // substring(4) pour retirer les 4 premiers caractères de la partie search de l'URL, juste après '?' pour obtenir la chaine de caractères de l'id de l'objet à partir de l'url
-console.log(produitIdUrl)
+// console.log(produitIdUrl)
 
 // fetch pour créer le texte et importer images des appareils photo
 
@@ -14,16 +14,16 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
     let response = await fetch(url)
         .then((response)=>{
             let itemData = response.json(); // renvoit la promesse en JSON
-                    console.log(response.body)
+                    // console.log(response.body)
                 appareils.push(itemData) //envoit les réponses reçues de JSON dans tableau appareils recenssant tous les appareils
-                    console.log(appareils)
+                    // console.log(appareils)
                     
                 itemData.then(function (appareil){
                     appareils.push(...appareil) // (opérateur de décomposition : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Spread_syntax) Array appareil contenant chaque élément du Json "...appareil" pour importer tous les appareils dans le tableau appareil
-                        console.table(appareil)
+                        // console.table(appareil)
                 
-                    let verifIdURL = appareil.find(appareilPhoto => appareilPhoto._id === produitIdUrl)
-                        console.table(verifIdURL)
+                    let verifIdURL = appareil.find(appareilPhoto => appareilPhoto._id === produitIdUrl) //va récupérer l'ID du produit dans l'URL et s'en sert pour trouver le bon produit à afficher
+                        // console.table(verifIdURL)
 
                     let title = document.title; // ajout titre page dynamique selon produit
                         document.title = 'Orinoco ' + '- ' + verifIdURL.name; // ajout titre page dynamique selon produit
@@ -52,13 +52,13 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
                         nomObjet.textContent = verifIdURL.name;
                         nomObjet.setAttribute('class','card-title me-1')
                         document.querySelector('.card').appendChild(cardDiv).appendChild(cardTitre).appendChild(nomObjet);
-                            console.log(nomObjet)
+                            // console.log(nomObjet)
                     
                     let prixObjet = document.createElement("p") // créé un élément HTML H3 pour le prix du produit
                         prixObjet.textContent = (verifIdURL.price/100).toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ') + ' €'; // .toFixed(2) pour mettre la virgule et deux chiffres après + .replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ') pour mettre separateur miliers et virgule au lieux du point
                         prixObjet.setAttribute('class','card-text')
                         document.querySelector('.card').appendChild(cardDiv).appendChild(cardTitre).appendChild(prixObjet);
-                            console.log(prixObjet)
+                            // console.log(prixObjet)
 
                     let cardSelection = document.createElement("div")
                         cardSelection.setAttribute('class', 'row')
@@ -73,9 +73,9 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
                                 
                                 let menuOptions = document.createElement("option");
                                     menuOptions.text = lense
-                                        console.log(menuOptions)
+                                        // console.log(menuOptions)
                                     document.querySelector('.card').appendChild(cardDiv).appendChild(cardSelection).appendChild(menuDeroulant).appendChild(menuOptions); // ajout de menuOptions dans les menuDéroulants
-                                        console.log(lense)
+                                        // console.log(lense)
                             });// fermeture forEach lenses
                             
     
@@ -91,12 +91,12 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
                         let tableauStorageLocal = [];
                             if(tableauStorage){
                                 tableauStorageLocal=JSON.parse(tableauStorage);
-                                console.log(tableauStorageLocal)
+                                // console.log(tableauStorageLocal)
                             }
                         tableauStorageLocal.push({"nom": verifIdURL.name, "_id": verifIdURL._id, "img": verifIdURL.imageUrl, "Quantite":'1', "prix": (verifIdURL.price/100).toFixed(2), "prixTotalObjet":(verifIdURL.price/100).toFixed(2) });
                             localStorage.setItem("tableauStorage", JSON.stringify(tableauStorageLocal))
                             
-                        console.log(tableauStorageLocal)
+                        // console.log(tableauStorageLocal)
                                 //localStorage.clear()
                         }); //fermeture addEventListener click button
 
@@ -105,7 +105,7 @@ let carteProduit =  async function() { //fonction asynchrone pour laisser charge
                         descriptionObjet.setAttribute('class','card-body text-center')
                         descriptionObjet.textContent = verifIdURL.description;
                         document.querySelector('.card').appendChild(cardDiv).appendChild(descriptionObjet);
-                            console.log(descriptionObjet)
+                            // console.log(descriptionObjet)
 
 
                         })// fermeture de itemData.then
