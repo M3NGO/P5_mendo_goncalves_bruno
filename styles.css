@@ -5,19 +5,19 @@ body {
   font-size:1.2em !important;
   font-weight: 500!important;
 }
-  .container {
-    display: flow-root;
-    width: 37.5em;
-    border: 1px solid #d2d2d2;
-  }
+.container {
+  display: flow-root;
+  width: 37.5em;
+  border: 1px solid #d2d2d2;
+}
   
-  img {
-    float: left;
-    cursor: pointer;
-    /* padding-right: 1.5em; */
-    width: 20em;
-    height: 20em;
-  }
+img {
+  float: left;
+  cursor: pointer;
+  /* padding-right: 1.5em; */
+  width: 20em;
+  height: 20em;
+}
   
   output {
     background: rgba(100, 100, 100, 0.1);
@@ -25,26 +25,37 @@ body {
     width: 95%;
   }
 
-  .margin{
-    margin-bottom: 3em;
-    padding-bottom: 3em;
-    position: relative;
+.margin{
+  margin-bottom: 3em;
+  padding-bottom: 3em;
+  position: relative;
+}
 
+
+input[pattern]:invalid{
+  color:red;
+}
+
+.card{
+  margin: 1em;
+  width: 20em !important;
+  flex-wrap: wrap !important;
+}
+.card-small{
+  max-height: 33em !important;
+}/*class pour réduire la hauteur de la carte quand elle est seule dans le panier, si deux cartes ou plus pas de soucis mais avec une seule l'espce cardbody est trop grand*/
+@media (max-width: 578px){
+  .card-small{
+    max-height: 45em !important;
   }
-
-
-  input[pattern]:invalid{
-    color:red;
-  }
-
-  .card{
-    margin: 1em;
-    width: 20em !important;
-    flex-wrap: wrap !important;
-  }
+}
+  
+@media (min-width: 974px){
   .card-small{
     max-height: 31em !important;
-  }/*class pour réduire la hauteur de la carte quand elle est seule dans le panier, si deux cartes ou plus pas de soucis mais avec une seule l'espce cardbody est trop grand*/
+  }
+}
+
 .container-sm{
   flex-wrap: wrap !important;
 
