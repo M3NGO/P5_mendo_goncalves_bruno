@@ -85,12 +85,15 @@ let arrayUnique = Array.from(new Set(tableauStorage.map(appareil => appareil._id
             tableauTotalParAppareil.setAttribute ('class', 'tableauTotal col-sm')
             document.querySelector('.panier').appendChild(cardDiv).appendChild(cardSousImage).appendChild(cardTitreGrid).appendChild(tableauTotalParAppareil)
 
-        let prixTotalApprareil = document.createElement("p"); 
+        let prixTotalApprareil = document.createElement("h2"); 
             prixTotalApprareil.setAttribute('class', 'prixTotalAppareil card-title')
-            prixTotalApprareil.innerHTML = 'Total Appareil : '+((quantite.value)*(element.prix)).toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')+' ' + '€';
+            prixTotalApprareil.innerHTML = 'Total Appareil : '
             console.log(prixTotalApprareil.innerHTML)
             document.querySelector('.panier').appendChild(cardDiv).appendChild(cardSousImage).appendChild(cardTitreGrid).appendChild(tableauTotalParAppareil).appendChild(prixTotalApprareil); // ajout de menuOptions dans les menuDéroulants
-    
+        let prixTotalApprareilMontant =document.createElement("p")
+        prixTotalApprareilMontant.setAttribute('class','card-text')
+        prixTotalApprareilMontant.innerHTML =((quantite.value)*(element.prix)).toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')+' ' + '€';
+        document.querySelector('.panier').appendChild(cardDiv).appendChild(cardSousImage).appendChild(cardTitreGrid).appendChild(tableauTotalParAppareil).appendChild(prixTotalApprareilMontant)
 
         let boutonValiderQuantiteAppareils = document.createElement("button");
             boutonValiderQuantiteAppareils.textContent = 'Valider la quantité';
@@ -149,8 +152,14 @@ localStorage.setItem("coutTotalCommande", CoutTotalCommande.toFixed(2))
 function totalCommande(){
     let totalCommande = document.createElement("div")
     totalCommande.setAttribute('class', 'totalCommande fs-2')
-    totalCommande.innerHTML ='Total de votre commande : '+ ((CoutTotalCommande.toFixed(2)).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')) + ' ' + '€'
+    totalCommande.innerHTML ='Total de votre commande : '
     document.querySelector('.totalPanier').appendChild(totalCommande)
+
+    let totalCommandeMontant = document.createElement("p")
+    totalCommandeMontant.setAttribute('class','fs-2 text')
+    totalCommandeMontant.innerHTML = ((CoutTotalCommande.toFixed(2)).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')) + ' €'
+    document.querySelector('.totalPanier').appendChild(totalCommande).appendChild(totalCommandeMontant)
+    
 }//fermeturef fonction totalCommande
 totalCommande()
 
