@@ -3,10 +3,10 @@ let title = document.title; // ajout titre page dynamique selon produit
 document.title = '0rinoco - Vous remercie pour votre commande'; // ajout titre page dynamique selon produit
 
 let contactparse = JSON.parse(localStorage.getItem("contact"))
-console.log(contactparse)
+// console.log(contactparse)
 
 let commandeFinale = JSON.parse(localStorage.getItem("tableauStorage"))
-console.log(commandeFinale)
+// console.log(commandeFinale)
 
 let remerciement = document.createElement('h1')
     remerciement.setAttribute('class', 'text-center mb-4')
@@ -16,7 +16,7 @@ let remerciement = document.createElement('h1')
 //commande:
 let quantiteFinale = localStorage.getItem('coutTotalCommande')
 quantiteFinale=quantiteFinale.replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
-console.log(quantiteFinale)
+// console.log(quantiteFinale)
 
 let confPaiement = document.createElement('p')
     confPaiement.setAttribute('class', 'quantite')
